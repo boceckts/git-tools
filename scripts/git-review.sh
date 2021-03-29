@@ -31,6 +31,7 @@ git pull
 read  -n 1 -p "Waiting until review is finished, press any key to continue..."
 
 # restore original state
+git reset --hard $review_branch
 git checkout $original_branch
 stash=$(git stash list | grep "$stash_message" | cut -d ":" -f 1)
 if [ -z "$stash" ]
