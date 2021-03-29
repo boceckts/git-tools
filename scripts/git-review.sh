@@ -1,13 +1,34 @@
 #!/bin/bash
 
 review_branch=master
+review_commits=1
 
 # prechecks
 if [ $# -lt 1 ]
 then
     echo "No branch to review specified, defaulting to $review_branch."
+    echo "No review range specified, defaulting to $review_commits."
+elif [ $# -eq 1 ]
+then
+    review_branch=$1
+    echo "No review range specified, defaulting to $review_commits."
+elif [ $# -eq 2 ]
+then
+    review_branch=$1
+    if [[ $2 =~ ^[0-9]{1}$ ]]
+    then
+        review_commits=$2
+    else
+        echo "Invalid review range specified, defaulting to $review_commits. The review range only allows values between 0 and 9 commits."
+    fi
 else
     review_branch=$1
+    if [[ $2 =~ ^[0-9]{1}$ ]]
+    then
+        review_commits=$2
+    else
+        echo "Invalid review range specified, defaulting to $review_commits. The review range only allows values between 0 and 9 commits."
+    fi
 fi
 
 git status > /dev/null 2>&1
@@ -25,8 +46,10 @@ git stash push -m "$stash_message"
 # prepare review branch
 git fetch --all
 git checkout $review_branch
-# required in case of master or previous checkout
+## required in case of master or previous checkout
 git pull
+## use a soft reset to easily indicate changed files
+git reset --soft HEAD~$review_commits
 
 read  -n 1 -p "Waiting until review is finished, press any key to continue..."
 
