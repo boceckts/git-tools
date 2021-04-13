@@ -1,5 +1,15 @@
 #!/bin/bash
 
+# Description:  Stashes local changes and checks out the specified branch
+#               for review by soft resetting the review branch to the number
+#               of specified commits. Review branch will default to master
+#               and number of commits to review will default to 1 if not specified.
+#               Add this script to your PATH environment variable before using it.
+# Usage:        ./git-review.sh [git-branch] [commits]
+# Examples:     ./git-review.sh
+#               ./git-review.sh develop/review-branch
+#               ./git-review.sh develop/review-branch 2
+
 review_branch=master
 review_commits=1
 
