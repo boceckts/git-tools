@@ -17,6 +17,8 @@ function git-super-checkout() {
     then
         echo "No branch name to checkout specified, defaulting to $branch_name."
         echo "No rebase range specified, defaulting to $branch_name."
+    else
+        branch_name=$1
     fi
 
     git fetch --all
@@ -31,9 +33,9 @@ function git-super-checkout() {
 }
 
 function git-main() {
-    git-super-checkout main
+    git-super-checkout "main"
 }
 
 function git-master() {
-    git-super-checkout master
+    git-super-checkout "master"
 }
