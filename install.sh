@@ -8,6 +8,6 @@ then
     echo "Scripts are already installed, nothing to do."
 else
     echo >> ~/.bash_profile
-    echo "for FILE in $(pwd)/scripts/* ; do source $FILE ; done" >> ~/.bash_profile
+    echo "for FILE in $(pwd)/scripts/git-* ; do source \$FILE ; done" >> ~/.bash_profile
     echo "Scripts are now installed, save time and have fun!"
 fi
