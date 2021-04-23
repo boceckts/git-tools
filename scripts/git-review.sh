@@ -10,8 +10,6 @@
 #               git-review develop/review-branch
 #               git-review develop/review-branch 2
 
-source git-utils.sh
-
 function git-review() {
 
     # git-utils.h scripts needs to be sourced first

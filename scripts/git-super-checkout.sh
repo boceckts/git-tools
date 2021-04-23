@@ -6,8 +6,6 @@
 # Usage:        git-super-checkout [branch]
 # Examples:     git-super-checkout develop
 
-source git-utils.sh
-
 function git-super-checkout() {
 
      # git-utils.h scripts needs to be sourced first

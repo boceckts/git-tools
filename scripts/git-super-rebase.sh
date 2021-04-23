@@ -10,8 +10,6 @@
 #               git-super-rebase origin/master
 #               git-super-rebase origin/master 2
 
-source git-utils.sh
-
 function git-super-rebase() {
 
      # git-utils.h scripts needs to be sourced first
