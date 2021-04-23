@@ -6,8 +6,12 @@
 # Usage:        git-super-checkout [branch]
 # Examples:     git-super-checkout develop
 
+source git-utils.sh
 
 function git-super-checkout() {
+
+     # git-utils.h scripts needs to be sourced first
+    git-available
 
     branch_name=main
 
@@ -28,4 +32,10 @@ function git-super-checkout() {
 
 }
 
-git-super-checkout $@
+function git-main() {
+    git-super-checkout main
+}
+
+function git-master() {
+    git-super-checkout master
+}

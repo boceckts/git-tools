@@ -10,7 +10,12 @@
 #               git-review develop/review-branch
 #               git-review develop/review-branch 2
 
+source git-utils.sh
+
 function git-review() {
+
+    # git-utils.h scripts needs to be sourced first
+    git-available
 
     review_branch=master
     review_commits=1
@@ -41,13 +46,6 @@ function git-review() {
         else
             echo "Invalid review range specified, defaulting to $review_commits. The review range only allows values between 0 and 9 commits."
         fi
-    fi
-
-    git status > /dev/null 2>&1
-    if [ $? -ne 0 ]
-    then
-        echo "Git not available, or current directory is not a git repository. Please install git or change into a valid git directory."
-        exit 1
     fi
 
     # save working state
@@ -81,5 +79,3 @@ function git-review() {
     echo "Happy Coding!"
 
 }
-
-git-review $@

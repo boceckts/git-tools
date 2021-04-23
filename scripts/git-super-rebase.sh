@@ -10,7 +10,12 @@
 #               git-super-rebase origin/master
 #               git-super-rebase origin/master 2
 
+source git-utils.sh
+
 function git-super-rebase() {
+
+     # git-utils.h scripts needs to be sourced first
+    git-available
 
     rebase_branch=origin/master
     rebase_commits=1
@@ -41,13 +46,6 @@ function git-super-rebase() {
         else
             echo "Invalid rebase range specified, defaulting to $rebase_commits. The rebase range only allows values between 0 and 9 commits."
         fi
-    fi
-
-    git status > /dev/null 2>&1
-    if [ $? -ne 0 ]
-    then
-        echo "Git not available, or current directory is not a git repository. Please install git or change into a valid git directory."
-        exit 1
     fi
 
     current_branch=$(git branch --show-current)
