@@ -8,8 +8,8 @@
 
 function git-pull() {
 
-     # git-utils.h scripts needs to be sourced first
-    git-available
+    # git-utils.h scripts needs to be sourced first
+    exit-on-git-unavailable
 
     git fetch --all
     git stash

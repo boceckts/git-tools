@@ -13,7 +13,7 @@
 function git-review() {
 
     # git-utils.h scripts needs to be sourced first
-    git-available
+    exit-on-git-unavailable
 
     review_branch=master
     review_commits=1

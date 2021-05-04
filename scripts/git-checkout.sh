@@ -8,8 +8,8 @@
 
 function git-checkout() {
 
-     # git-utils.h scripts needs to be sourced first
-    git-available
+    # git-utils.h scripts needs to be sourced first
+    exit-on-git-unavailable
 
     branch_name=main
 

@@ -12,8 +12,8 @@
 
 function git-rebase() {
 
-     # git-utils.h scripts needs to be sourced first
-    git-available
+    # git-utils.h scripts needs to be sourced first
+    exit-on-git-unavailable
 
     rebase_branch=origin/master
     rebase_commits=1
