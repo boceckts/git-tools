@@ -11,10 +11,18 @@ function git-pull() {
     # git-utils.h scripts needs to be sourced first
     exit-on-git-unavailable
 
+    stash_message="Temporary stash during pull of remote changes at $(date "+%d%m%y%H%M%S")"
+
     git fetch --all
-    git stash
+    git stash push -m "$stash_message"
     git pull
-    git stash pop
+    stash=$(git stash list | grep "$stash_message" | cut -d ":" -f 1)
+    if [ -z "$stash" ]
+    then
+        echo "Nothing was stashed."
+    else
+        git stash pop $stash
+    fi
 
     echo "Pulling changes finished."
     echo "Happy Coding!"
