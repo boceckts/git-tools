@@ -5,12 +5,12 @@
 #               branch and cherry picking the number of specified commits from the
 #               temporary branch.
 #               Add this script to your PATH environment variable before using it.
-# Usage:        git-super-rebase [git-branch] [commits]
-# Examples:     git-super-rebase
-#               git-super-rebase origin/master
-#               git-super-rebase origin/master 2
+# Usage:        git-rebase [git-branch] [commits]
+# Examples:     git-rebase
+#               git-rebase origin/master
+#               git-rebase origin/master 2
 
-function git-super-rebase() {
+function git-rebase() {
 
      # git-utils.h scripts needs to be sourced first
     git-available
