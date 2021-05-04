@@ -12,6 +12,7 @@ function git-checkout() {
     exit-on-git-unavailable
 
     branch_name=main
+    stash_message="Temporary stash during checkout to $branch_name at $(date "+%d%m%y%H%M%S")"
 
     if [ $# -lt 1 ]
     then
@@ -22,10 +23,16 @@ function git-checkout() {
     fi
 
     git fetch --all
-    git stash
+    git stash push -m "$stash_message"
     git checkout $branch_name
     git pull
-    git stash pop
+    stash=$(git stash list | grep "$stash_message" | cut -d ":" -f 1)
+    if [ -z "$stash" ]
+    then
+        echo "Nothing was stashed."
+    else
+        git stash pop $stash
+    fi
 
     echo "checkout to $branch_name branch finished."
     echo "Happy Coding!"
