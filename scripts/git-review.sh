@@ -59,7 +59,7 @@ function git-review() {
     ## use a soft reset to easily indicate changed files
     git reset --soft HEAD~$review_commits
 
-    read  -n 1 -p "Waiting until review is finished, press any key to continue..."
+    bash read  -n 1 -p "Waiting until review is finished, press any key to continue..."
 
     # restore original state
     git reset --hard $review_branch
