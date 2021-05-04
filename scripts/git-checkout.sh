@@ -3,10 +3,10 @@
 # Description:  Checkout a branch and update it to the latests commit
 #               while keeping your current local changes.
 #               Add this script to your PATH environment variable before using it.
-# Usage:        git-super-checkout [branch]
-# Examples:     git-super-checkout develop
+# Usage:        git-checkout [branch]
+# Examples:     git-checkout develop
 
-function git-super-checkout() {
+function git-checkout() {
 
      # git-utils.h scripts needs to be sourced first
     git-available
@@ -33,9 +33,9 @@ function git-super-checkout() {
 }
 
 function git-main() {
-    git-super-checkout "main"
+    git-checkout "main"
 }
 
 function git-master() {
-    git-super-checkout "master"
+    git-checkout "master"
 }
