@@ -55,6 +55,7 @@ function git-rebase() {
     git checkout $current_branch
     git reset --hard $rebase_branch 
     git log $temp_branch --pretty=format:'%h' -n $rebase_commits | xargs git cherry-pick --strategy=resolve
+    git branch -D $temp_branch
 
     echo "rebase for $current_branch to $rebase_branch finished."
     echo "Happy Coding!"
